@@ -2,20 +2,21 @@ package com.spring.database.database_demo.entity;
 
 import java.util.Date;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQuery;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "person")
 @NamedQuery(name="find_all_persons",query="select p from Person p")
 public class Person {
 
     @Id
     @GeneratedValue
     private int id;
+    @Column(name = "name", nullable = false )
     private String name;
+    @Column(name = "location")
     private String location;
+    @Column(name = "birth_date")
     private Date birth_date;
 
     public Person() {
