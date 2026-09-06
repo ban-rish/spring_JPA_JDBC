@@ -72,4 +72,13 @@ public class CourseJpaRepository {
         int noOfUpdatedRows = query.executeUpdate();
         log.info("Updated rows = {}", noOfUpdatedRows);
     }
+
+    public void addCourses() {
+        Course course0 = new Course("AWS Course", LocalDateTime.now(),LocalDateTime.now());
+        Course course1 = new Course("Spring Course", LocalDateTime.now(),LocalDateTime.now());
+        Course course2 = new Course("SpringBoot Course", LocalDateTime.now(),LocalDateTime.now());
+        em.persist(course0);
+        em.persist(course1);
+        em.persist(course2);
+    }
 }
