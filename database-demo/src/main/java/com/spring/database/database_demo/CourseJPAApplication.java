@@ -37,6 +37,7 @@ public class CourseJPAApplication implements CommandLineRunner {
 		course_repo.addCourses();
 		stu_repo.addStudents();
 		stu_repo.retrieveStudentAndPassportDetails();
+		pass_repo.retrievePassportAndAssociatedStudent();
 //		pass_repo.addPassport();
 		review_repo.addReviews();
 	}
