@@ -2,6 +2,7 @@ package com.spring.database.database_demo.jpa;
 
 
 import com.spring.database.database_demo.entity.Course;
+import com.spring.database.database_demo.entity.Review;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -80,5 +81,21 @@ public class CourseJpaRepository {
         em.persist(course0);
         em.persist(course1);
         em.persist(course2);
+    }
+
+    public void addReviewsForCourse() {
+        //get the details of Course
+        Course course = findById(3);
+        //addition of reviews
+        Review review1 = new Review("5","Just Great");
+        Review review2 = new Review("4","Just Good");
+        //set the mapping
+        course.addReview(review1);
+        course.addReview(review2);
+        review1.setCourse(course);
+        review2.setCourse(course);
+        //save to the DataBase
+        em.persist(review1);
+        em.persist(review2);
     }
 }

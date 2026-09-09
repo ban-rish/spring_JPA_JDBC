@@ -34,11 +34,12 @@ public class CourseJPAApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		course_repo.addCourses();
+//		course_repo.addCourses();
 		stu_repo.addStudents();
 		stu_repo.retrieveStudentAndPassportDetails();
 		pass_repo.retrievePassportAndAssociatedStudent();
 //		pass_repo.addPassport();
 		review_repo.addReviews();
+		course_repo.addReviewsForCourse();
 	}
 }

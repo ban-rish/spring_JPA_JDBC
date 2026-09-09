@@ -17,6 +17,9 @@ public class Review {
     @Column(name = "description")
     private String description;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Course course;
+
     public Review() {}
 
     public Review(String rating, String description) {
@@ -46,6 +49,14 @@ public class Review {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     @Override
