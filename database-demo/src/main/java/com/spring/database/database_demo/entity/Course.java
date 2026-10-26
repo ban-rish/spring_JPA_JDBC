@@ -33,6 +33,12 @@ public class Course {
     @OneToMany(mappedBy = "course")
     private List<Review> reviews = new ArrayList<Review>();
 
+    @ManyToMany
+    @JoinTable(name = "STUDENT_COURSE",
+    joinColumns = @JoinColumn(name = "COURSE_ID"),
+    inverseJoinColumns = @JoinColumn(name = "STUDENT_ID"))
+    private List<Student> students = new ArrayList<>();
+
     public Course() {}
 
     public Course(String name) {
@@ -71,6 +77,14 @@ public class Course {
 
     public void removeReview(Review review) {
         this.reviews.remove(review);
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void addStudent(Student student) {
+        this.students.add(student);
     }
 
     @Override

@@ -1,7 +1,8 @@
 package com.spring.database.database_demo;
 
+import com.spring.database.database_demo.entity.Course;
 import com.spring.database.database_demo.entity.Person;
-import com.spring.database.database_demo.jdbc.PersonJdbcDao;
+import com.spring.database.database_demo.entity.Student;
 import com.spring.database.database_demo.jpa.CourseJpaRepository;
 import com.spring.database.database_demo.jpa.PersonJpaRepository;
 import org.slf4j.Logger;
@@ -13,7 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Date;
 
-//@SpringBootApplication
+@SpringBootApplication
 public class SpringJPADemoApplication implements CommandLineRunner {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -41,6 +42,9 @@ public class SpringJPADemoApplication implements CommandLineRunner {
 		logger.info("--------------COURSE REPOSITORY OPERATION STARTED---------------");
 		repositoryCourse.updateCourseName(2,"updated");
 		repositoryCourse.nativeQueryBasic();
+		repositoryCourse.getCourseAndstudentDetails();
+		repositoryCourse.insertHardCodedStudentAndCourse();
+		repositoryCourse.insertStudentAndCourse(new Student("Ricky"), new Course("TT"));
 
 		/*logger.info(personJdbcDao.findAll().toString());
 		logger.info(personJdbcDao.findByName("Pieter").toString());

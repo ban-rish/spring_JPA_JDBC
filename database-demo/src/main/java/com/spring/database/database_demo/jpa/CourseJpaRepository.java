@@ -3,6 +3,7 @@ package com.spring.database.database_demo.jpa;
 
 import com.spring.database.database_demo.entity.Course;
 import com.spring.database.database_demo.entity.Review;
+import com.spring.database.database_demo.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -25,6 +26,31 @@ public class CourseJpaRepository {
 
     public Course findById(long id) {
         return em.find(Course.class, id);
+    }
+
+    public void getCourseAndstudentDetails(){
+        Course course = em.find(Course.class,40003);
+        log.info("Course is -> {}",course.toString());
+        log.info("Students are -> {}",course.getStudents().toString());
+    }
+
+    public void insertHardCodedStudentAndCourse(){
+        Student student = new Student("Jammy");
+        Course course = new Course("Ping Pong");
+        em.persist(student);
+        em.persist(course);
+        student.addCourses(course);
+        course.addStudent(student);
+        em.persist(course);
+    }
+
+    public void insertStudentAndCourse(Student student,Course course){
+//        Student student = new Student("Jammy");
+//        Course course = new Course("Ping Pong");
+        student.addCourses(course);
+        course.addStudent(student);
+        em.persist(course);
+        em.persist(student);
     }
 
     public Course updateCourseName(int id, String name) {
